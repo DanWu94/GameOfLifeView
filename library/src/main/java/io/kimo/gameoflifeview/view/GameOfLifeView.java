@@ -8,7 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
@@ -38,6 +40,9 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
     private int proportion = DEFAULT_PROPORTION;
     private int aliveColor = DEFAULT_ALIVE_COLOR;
     private int deadColor = DEFAULT_DEAD_COLOR;
+
+    volatile boolean touched = false;
+    volatile float touched_x, touched_y;
 
     public GameOfLifeView(Context context) {
         super(context);
@@ -197,5 +202,33 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         deadColor = styles.getColor(R.styleable.game_of_life_view_deadCellColor, DEFAULT_DEAD_COLOR);
 
         styles.recycle();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        touched_x = event.getX();
+        touched_y = event.getY();
+        Log.d("TOUCH:", Float.toString(touched_x)+", "+Float.toString(touched_y));
+
+        int action = event.getAction();
+        switch(action){
+            case MotionEvent.ACTION_DOWN:
+                touched = true;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                touched = false;
+                break;
+            case MotionEvent.ACTION_UP:
+                touched = false;
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                touched = false;
+                break;
+            case MotionEvent.ACTION_OUTSIDE:
+                touched = false;
+                break;
+            default:
+        }
+        return true; //processed
     }
 }
