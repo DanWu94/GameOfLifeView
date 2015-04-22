@@ -42,7 +42,7 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
     private int deadColor = DEFAULT_DEAD_COLOR;
 
     volatile boolean touched = false;
-    volatile float touched_x, touched_y;
+    volatile int touched_x, touched_y;
 
     public GameOfLifeView(Context context) {
         super(context);
@@ -206,9 +206,9 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        touched_x = event.getX();
-        touched_y = event.getY();
-        Log.d("TOUCH:", Float.toString(touched_x)+", "+Float.toString(touched_y));
+        touched_x = (int)Math.floor(event.getX()/columnWidth);
+        touched_y = (int)Math.floor(event.getY()/rowHeight);
+        Log.d("TOUCH", Float.toString(touched_x)+", "+Float.toString(touched_y));
 
         int action = event.getAction();
         switch(action){
