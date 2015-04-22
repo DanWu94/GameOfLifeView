@@ -219,7 +219,7 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
                 touched = true;
                 break;
             case MotionEvent.ACTION_MOVE:
-                touched = false;
+                touched = true;
                 break;
             case MotionEvent.ACTION_UP:
                 touched = false;
