@@ -76,6 +76,9 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
 
             Canvas canvas = getHolder().lockCanvas();
             world.rotate();
+            if(touched){
+                reviveCellsAt(touched_x,touched_y);
+            }
             getHolder().unlockCanvasAndPost(drawCells(canvas));
         }
     }
@@ -100,10 +103,10 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         }
     }
 
-    public void reviveCellsAt(float x, float y) {
+    public void reviveCellsAt(int x, int y) {
 
-        int X = (int) (x/ proportion);
-        int Y = (int) (y/ proportion);
+        int X = x;
+        int Y = y;
 
         while(X >= world.getWidth())
             X--;
