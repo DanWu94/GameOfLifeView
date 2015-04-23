@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Utils.configureToolbar(this, false);
-        setTitle("Game of Life View Examples");
+        setTitle("Game of Life Adventure");
         configureRecyclerView();
     }
 
@@ -93,9 +93,9 @@ public class MainActivity extends ActionBarActivity {
         private void configureOptions() {
             examplesOptions = new ArrayList<>();
 
-            examplesOptions.add("Default view");
-            examplesOptions.add("Through XML");
-            examplesOptions.add("With custom parameters");
+            examplesOptions.add("Clear mode");
+            examplesOptions.add("Free mode");
+            examplesOptions.add("Help");
         }
     }
 }

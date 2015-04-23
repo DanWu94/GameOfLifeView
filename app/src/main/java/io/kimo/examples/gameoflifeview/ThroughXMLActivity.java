@@ -18,7 +18,7 @@ public class ThroughXMLActivity extends ActionBarActivity {
 
         setContentView(R.layout.with_xml);
         Utils.configureToolbar(this, true);
-        setTitle("Through XML");
+        setTitle("Free Mode");
 
         gameOfLifeView = (GameOfLifeView) findViewById(R.id.game_of_life);
     }
