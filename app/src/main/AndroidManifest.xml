@@ -16,15 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="io.kimo.examples.gameoflifeview.ThroughXMLActivity">
+        <activity android:name=".ThroughXMLActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="io.kimo.examples.gameoflifeview.MainActivity"/>
+                android:value="io.kimo.examples.gameoflifeview.MainActivity" />
         </activity>
-        <activity android:name="io.kimo.examples.gameoflifeview.CustomParamsActivity">
+        <activity android:name=".CustomParamsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="io.kimo.examples.gameoflifeview.MainActivity"/>
+                android:value="io.kimo.examples.gameoflifeview.MainActivity" />
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help" >
         </activity>
     </application>
 

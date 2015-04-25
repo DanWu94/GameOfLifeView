@@ -15,9 +15,9 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static final int CUSTOM_GOL_VIEW = 0;
-    public static final int GOL_VIEW_XML = 1;
-    public static final int CUSTOM_COLORS = 2;
+    public static final int GOL_CLEAR = 0;
+    public static final int GOL_FREE = 1;
+    public static final int GOL_HELP = 2;
 
     private RecyclerView recyclerView;
 
@@ -77,14 +77,14 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 switch (getPosition()) {
-                    case CUSTOM_GOL_VIEW:
+                    case GOL_CLEAR:
                         startActivity(new Intent(MainActivity.this, CustomParamsActivity.class));
                         break;
-                    case GOL_VIEW_XML:
+                    case GOL_FREE:
                         startActivity(new Intent(MainActivity.this, ThroughXMLActivity.class));
                         break;
-                    case CUSTOM_COLORS:
-                        startActivity(new Intent(MainActivity.this, CustomParamsActivity.class));
+                    case GOL_HELP:
+                        startActivity(new Intent(MainActivity.this, HelpActivity.class));
                         break;
                 }
             }
