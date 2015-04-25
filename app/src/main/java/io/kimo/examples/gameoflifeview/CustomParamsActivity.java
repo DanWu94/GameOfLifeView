@@ -14,7 +14,7 @@ public class CustomParamsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.with_custom_params);
         Utils.configureToolbar(this, true);
-        setTitle("Custom Parameters");
+        setTitle("Clear Mode");
 
         gameOfLifeView = (GameOfLifeView) findViewById(R.id.game_of_life);
     }

@@ -54,6 +54,19 @@ public class World {
         this.cells = boardCells.toArray(new Cell[this.width*this.height]);
     }
 
+    public Cell[] getLiveCells() {
+        List<Cell> liveCells = new ArrayList<Cell>();
+
+        for(int i = 0; i < this.width; i++) {
+            for (int j = 0; j < this.height; j++) {
+                if (this.board[i][j].isAlive)
+                    liveCells.add(this.board[i][j]);
+            }
+        }
+        Cell[] liveCellsArray = liveCells.toArray(new Cell[liveCells.size()]);
+        return liveCellsArray;
+    }
+
     public Cell get(int i, int j) {
         return this.board[i][j];
     }

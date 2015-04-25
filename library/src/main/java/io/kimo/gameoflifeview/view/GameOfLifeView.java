@@ -1,6 +1,8 @@
 package io.kimo.gameoflifeview.view;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -26,6 +28,8 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
     public static final int DEFAULT_PROPORTION = 50;
     public static final int DEFAULT_ALIVE_COLOR = Color.BLACK;
     public static final int DEFAULT_DEAD_COLOR = Color.WHITE;
+    public static final boolean DEFAULT_CLEAR_MODE = false;
+
 
     private Thread thread;
     private boolean isRunning = false;
@@ -40,6 +44,7 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
     private int proportion = DEFAULT_PROPORTION;
     private int aliveColor = DEFAULT_ALIVE_COLOR;
     private int deadColor = DEFAULT_DEAD_COLOR;
+    private boolean clearMode = DEFAULT_CLEAR_MODE;
 
     volatile boolean touched = false;
     volatile int touched_x, touched_y;
@@ -184,6 +189,22 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
             canvas.drawRect(r, p);
         }
 
+        Log.d("LiveCells", String.valueOf(world.getLiveCells().length));
+        Log.d("ClearMode", String.valueOf(clearMode));
+        if(world.getLiveCells().length==0 && clearMode){
+            Paint paint = new Paint();
+            paint.setColor(Color.WHITE);
+            paint.setStyle(Paint.Style.FILL);
+            paint.setColor(Color.BLACK);
+            paint.setTextAlign(Paint.Align.CENTER);
+            paint.setTextSize(100);
+            canvas.drawText("YOU WIN",
+                    numberOfColumns/2*columnWidth,
+                    numberOfRows/2*rowHeight,
+                    paint);
+            isRunning = false;
+        }
+
         return canvas;
     }
 
@@ -200,6 +221,7 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
 
         aliveColor = styles.getColor(R.styleable.game_of_life_view_aliveCellColor, DEFAULT_ALIVE_COLOR);
         deadColor = styles.getColor(R.styleable.game_of_life_view_deadCellColor, DEFAULT_DEAD_COLOR);
+        clearMode = styles.getBoolean(R.styleable.game_of_life_view_clearMode, DEFAULT_CLEAR_MODE);
 
         styles.recycle();
     }

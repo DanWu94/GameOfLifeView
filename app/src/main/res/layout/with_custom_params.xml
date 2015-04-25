@@ -16,8 +16,9 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        game_of_life_view:proportion="20"
-        game_of_life_view:aliveCellColor="#FF0000"
-        game_of_life_view:deadCellColor="#0000FF"/>
+        game_of_life_view:proportion="50"
+        game_of_life_view:aliveCellColor="#000000"
+        game_of_life_view:deadCellColor="#FFFFFF"
+        game_of_life_view:clearMode="true"/>
 
 </FrameLayout>

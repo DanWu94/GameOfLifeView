@@ -4,5 +4,6 @@
         <attr name="proportion" format="integer|reference"/>
         <attr name="deadCellColor" format="color|reference"/>
         <attr name="aliveCellColor" format="color|reference"/>
+        <attr name="clearMode" format="boolean|reference"/>
     </declare-styleable>
 </resources>

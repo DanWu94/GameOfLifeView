@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static final int DEFAULT_GOL_VIEW_CODE = 0;
+    public static final int CUSTOM_GOL_VIEW = 0;
     public static final int GOL_VIEW_XML = 1;
     public static final int CUSTOM_COLORS = 2;
 
@@ -77,8 +77,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 switch (getPosition()) {
-                    case DEFAULT_GOL_VIEW_CODE:
-                        startActivity(new Intent(MainActivity.this, ThroughCodeActivity.class));
+                    case CUSTOM_GOL_VIEW:
+                        startActivity(new Intent(MainActivity.this, CustomParamsActivity.class));
                         break;
                     case GOL_VIEW_XML:
                         startActivity(new Intent(MainActivity.this, ThroughXMLActivity.class));
