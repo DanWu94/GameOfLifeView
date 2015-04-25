@@ -261,6 +261,10 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         if(touched){
             if(win){
                 win = false;
+                if(proportion>20) {
+                    proportion -= 5;
+                    calculateWorldParams();
+                }
                 world = new World(numberOfColumns, numberOfRows, true);
                 this.start();
             }
