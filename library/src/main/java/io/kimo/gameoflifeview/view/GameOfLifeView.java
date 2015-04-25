@@ -48,6 +48,7 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
 
     volatile boolean touched = false;
     volatile int touched_x, touched_y;
+    volatile boolean win = false;
 
     public GameOfLifeView(Context context) {
         super(context);
@@ -197,12 +198,18 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(Color.BLACK);
             paint.setTextAlign(Paint.Align.CENTER);
-            paint.setTextSize(100);
+            paint.setTextSize(canvas.getWidth()/7);
             canvas.drawText("YOU WIN",
-                    numberOfColumns/2*columnWidth,
-                    numberOfRows/2*rowHeight,
+                    canvas.getWidth()/2,
+                    canvas.getHeight()/2-canvas.getWidth()/14,
+                    paint);
+            paint.setTextSize(canvas.getWidth()/28);
+            canvas.drawText("touch anywhere to enter next stage",
+                    canvas.getWidth()/2,
+                    canvas.getHeight()/2,
                     paint);
             isRunning = false;
+            win = true;
         }
 
         return canvas;
@@ -252,6 +259,11 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
             default:
         }
         if(touched){
+            if(win){
+                win = false;
+                world = new World(numberOfColumns, numberOfRows, true);
+                this.start();
+            }
             Canvas canvas = getHolder().lockCanvas();
             world.revive(touched_x,touched_y);
             getHolder().unlockCanvasAndPost(drawCells(canvas));
