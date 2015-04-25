@@ -2,6 +2,7 @@ package io.kimo.examples.gameoflifeview;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 import io.kimo.gameoflifeview.view.GameOfLifeView;
 
@@ -17,6 +18,12 @@ public class CustomParamsActivity extends ActionBarActivity {
         setTitle("Clear Mode");
 
         gameOfLifeView = (GameOfLifeView) findViewById(R.id.game_of_life);
+        gameOfLifeView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
     @Override
