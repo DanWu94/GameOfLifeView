@@ -4,5 +4,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_help">HelpActivity</string>
-    <string name="help">dsadsa</string>
+    <string name="clear_help">
+         In "Clear Mode", you need to clear all live cells by adding one live cell at a time.
+    </string>
+    <string name="free_help">
+         In "Free Mode", you can try your designs of cell patterns using the pause/resume button.
+    </string>
+    <string name="clear_title">Clear Mode</string>
+    <string name="free_title">Free Mode</string>
 </resources>
