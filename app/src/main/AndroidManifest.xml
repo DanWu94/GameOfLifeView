@@ -26,9 +26,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.kimo.examples.gameoflifeview.MainActivity" />
         </activity>
-        <activity
-            android:name=".HelpActivity"
-            android:label="@string/title_activity_help" >
+        <activity android:name=".HelpActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.kimo.examples.gameoflifeview.MainActivity" />
         </activity>
     </application>
 
